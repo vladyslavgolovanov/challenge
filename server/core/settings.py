@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
-
+    'drf_spectacular',
     # Apps
     'user',
 ]
@@ -217,7 +217,19 @@ REST_FRAMEWORK = {
 
     "DEFAULT_PERMISSION_CLASSES": [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Logo Name',
+    'DESCRIPTION': 'This API provides a simple functionality for user '
+                   'authentication and product subscription using Stripe'
+                   ' payment sessions. The available services include login, '
+                   'logout, and subscription management for two products.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
 
 AUTH_USER_MODEL = 'user.User'
